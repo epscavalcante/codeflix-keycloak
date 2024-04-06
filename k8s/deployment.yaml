@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: codeflix-auth
-          image: epscavalcante/keycloak-custom:latest
+          image: epscavalcante/codeflix-keycloak:v0.0.2
           args: ["start"]
           envFrom:
           - configMapRef:
