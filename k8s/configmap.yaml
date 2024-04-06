@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: codeflix-auth-configmap
+data:
+  PROXY_ADDRESS_FORWARDING: "true"
+  KC_PROXY: "edge"
+  KC_HOSTNAME_STRICT: "false"
+  KC_HOSTNAME_STRICT_HTTPS: "false"
+  KC_HTTP_PORT: "8080"
+  KC_HTTP_ENABLED: "true"
+  KC_HTTPS_ENABLED: "false"
+  KC_HOSTNAME: "auth.epscavalcante.dev"
+  #KC_HOSTNAME_PORT: value: "80"
+  KC_DB: "mysql"

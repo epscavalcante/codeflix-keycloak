@@ -2,7 +2,7 @@ version: '3'
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:23.0.4
+    build: .
     container_name: codeflix-keycloak-app
     command: start-dev
     ports: 
@@ -25,7 +25,7 @@ services:
       - MYSQL_DATABASE=keycloak
       - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "3306:3306"
+      - "33306:3306"
     volumes:
       - .docker/database/data:/var/lib/mysql
     healthcheck:
