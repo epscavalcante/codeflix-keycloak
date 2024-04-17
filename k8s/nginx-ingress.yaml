@@ -13,10 +13,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - auth.epscavalcante.dev
+    - keycloak.epscavalcante.dev
     secretName: letsencrypt-main-secret
   rules:
-  - host: "auth.epscavalcante.dev"
+  - host: "keycloak.epscavalcante.dev"
     http:
       paths:
       - path: "/"
