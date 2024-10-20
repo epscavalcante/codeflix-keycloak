@@ -11,4 +11,4 @@ resources:
 images:
 - name: epscavalcante/codeflix-keycloak
   newName: epscavalcante/codeflix-keycloak
-  newTag: v0.0.11
+  newTag: v0.0.14
