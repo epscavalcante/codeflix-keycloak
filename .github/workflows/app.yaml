@@ -62,10 +62,10 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
-          context: ./.docker/keycloak
+          context: .
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          file: Dockerfile
+          file: ./.docker/keycloak/Dockerfile
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ steps.tagging.outputs.new_tag }} 
