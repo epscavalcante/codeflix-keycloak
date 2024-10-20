@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  codeflix-keycloak-app:
+    build: ./keycloak
+    container_name: codeflix-keycloak-app
+    command: start-dev
+    ports: 
+      - 8080:8080
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_DB=mysql
+      - KC_DB_URL=jdbc:mysql://codeflix-keycloak-database:3306/keycloak
+      - KC_DB_USERNAME=root
+      - KC_DB_PASSWORD=root
+    depends_on:
+      codeflix-keycloak-database:
+        condition: service_healthy
+
+  codeflix-keycloak-database:
+    container_name: codeflix-keycloak-database
+    build: ./database
+    environment:
+      - MYSQL_DATABASE=keycloak
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./database/data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
